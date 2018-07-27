@@ -5,16 +5,20 @@ import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom'
 
 import './css/style.css'
 
+const Link = (props) => (
+  <NavLink activeStyle={{ color: 'Blue' }} {...props} />
+)
+
 class App extends PureComponent {
   render () {
     return (
       <BrowserRouter>
         <div>
           <ul>
-            <li><NavLink to='/' exact children='Home' /></li>
-            <li><NavLink to='/sobre' children='Sobre' /></li>
+            <li><NavLink activeClassName='active-link' to='/' exact children='Home' /></li>
+            <li><NavLink activeStyle={{ color: 'red' }} to='/sobre' children='Sobre' /></li>
             <li><NavLink to='/contato' children='Contato' /></li>
-            <li><NavLink to='/blog' children='Blog' /></li>
+            <li><Link to='/blog' children='Blog' /></li>
           </ul>
           <Switch>
             <Route path='/' exact component={Home} />
